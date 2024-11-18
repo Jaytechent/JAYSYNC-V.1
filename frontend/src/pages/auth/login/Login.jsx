@@ -17,6 +17,8 @@ const Login = () => {
     } = useForm();
     const location = useLocation();
 const from = (location.state && location.state.from) || "/";
+console.log("Environment API Base URL:", import.meta.env.VITE_API_BASE_URL);
+
  console.log("Redirecting to:", from);
     const onSubmit = async (data) => {
         const toastLoading = toast.loading('User Signing...')
@@ -28,7 +30,7 @@ const from = (location.state && location.state.from) || "/";
             
             if (data.user.role === 'user') {
                 navigation('/dashboard')
-            }else if(data.user.role === 'organiger'){
+            }else if(data.user.role === 'organizer'){
                 navigation('/dashboard/organiger')
             }else{
                 navigation(from)
